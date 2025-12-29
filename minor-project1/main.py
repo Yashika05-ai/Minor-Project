@@ -1,9 +1,11 @@
+# Import Libraries
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from scipy import stats
 
+# Create Simulated Dataset
 np.random.seed(42)
 
 n = 120
@@ -21,10 +23,12 @@ data = {
 
 df = pd.DataFrame(data)
 
+#Descriptive Statistics
 desc_stats = df["Completion_Time_Days"].describe()
 print("Descriptive Statistics:")
 print(desc_stats)
 
+# Box Plot – Completion Time vs Gig Category
 plt.figure()
 sns.boxplot(
     x="Gig_Category",
@@ -36,6 +40,7 @@ plt.xlabel("Gig Category")
 plt.ylabel("Completion Time (Days)")
 plt.show()
 
+# Box Plot – Completion Time vs Experience Level
 plt.figure()
 sns.boxplot(
     x="Experience_Level",
@@ -47,11 +52,12 @@ plt.xlabel("Experience Level")
 plt.ylabel("Completion Time (Days)")
 plt.show()
 
-
+# Mean Completion Time Comparison
 mean_times = df.groupby("Experience_Level")["Completion_Time_Days"].mean()
 print("\nMean Completion Time by Experience Level:")
 print(mean_times)
 
+# Two-Sample t-Test (Beginner vs Expert)
 beginner = df[df["Experience_Level"] == "Beginner"]["Completion_Time_Days"]
 expert = df[df["Experience_Level"] == "Expert"]["Completion_Time_Days"]
 
@@ -61,6 +67,7 @@ print("\nTwo-Sample t-Test (Beginner vs Expert)")
 print("t-statistic:", round(t_stat, 3))
 print("p-value:", round(p_value, 4))
 
+# One-Way ANOVA (Gig Categories)
 design = df[df["Gig_Category"] == "Design"]["Completion_Time_Days"]
 writing = df[df["Gig_Category"] == "Writing"]["Completion_Time_Days"]
 coding = df[df["Gig_Category"] == "Coding"]["Completion_Time_Days"]
@@ -72,6 +79,7 @@ print("\nOne-Way ANOVA (Gig Category)")
 print("F-statistic:", round(f_stat, 3))
 print("p-value:", round(p_val, 4))
 
+# Histogram – Distribution of Completion Time
 plt.figure()
 plt.hist(df["Completion_Time_Days"], bins=10)
 plt.title("Distribution of Completion Time")
@@ -79,4 +87,3 @@ plt.xlabel("Completion Time (Days)")
 plt.ylabel("Frequency")
 plt.show()
 
- 
