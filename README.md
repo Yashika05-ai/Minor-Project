@@ -44,7 +44,7 @@ These columns are used to analyze completion time and productivity trends.
  📄 requirements.txt
 
 pandas
-numpy
+numpy 
 matplotlib
 seaborn
 scipy
