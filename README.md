@@ -42,11 +42,15 @@ These columns are used to analyze completion time and productivity trends.
 - **SciPy** – Hypothesis testing
 
  📄 requirements.txt
-
+ 
 pandas
+<br>
 numpy 
+<br>
 matplotlib
+<br>
 seaborn
+<br>
 scipy
 
 ▶️ How to Run the Project
